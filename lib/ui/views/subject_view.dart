@@ -47,7 +47,7 @@ class _SubjectViewState extends State<SubjectView> {
 
     return SafeArea(
       child: Scaffold(
-        backgroundColor: const Color.fromARGB(135, 52, 51, 51),
+        backgroundColor: AppColor.white,
         body: Padding(
           padding: const EdgeInsets.all(16),
           child: Column(
@@ -59,7 +59,7 @@ class _SubjectViewState extends State<SubjectView> {
                       "assets/icons/back.svg",
                       width: 24,
                       height: 24,
-                      color: const Color.fromARGB(255, 255, 255, 255),
+                      color: Color.fromARGB(255, 0, 0, 0),
                     ),
                     onTap: () {
                       // Navigate back
@@ -103,7 +103,7 @@ class _SubjectViewState extends State<SubjectView> {
                           "assets/icons/gmeet.svg",
                           width: 24,
                           height: 24,
-                          color: const Color.fromARGB(255, 255, 255, 255),
+                          color: Color.fromARGB(255, 0, 0, 0),
                         ),
                         onTap: () {
                           Navigator.push(
@@ -122,7 +122,7 @@ class _SubjectViewState extends State<SubjectView> {
                           "assets/icons/info.svg",
                           width: 24,
                           height: 24,
-                          color: const Color.fromARGB(255, 255, 255, 255),
+                          color: Color.fromARGB(255, 0, 0, 0),
                         ),
                         onTap: () {},
                       ),
@@ -155,7 +155,7 @@ class _SubjectViewState extends State<SubjectView> {
                 haptic: true,
                 gap: 8,
                 tabMargin: const EdgeInsets.symmetric(horizontal: 8),
-                color: AppColor.grey,
+                color: Color.fromARGB(255, 0, 0, 0),
                 activeColor: Theme.of(context).primaryColor,
                 tabBackgroundColor:
                     Theme.of(context).primaryColor.withOpacity(0.25),

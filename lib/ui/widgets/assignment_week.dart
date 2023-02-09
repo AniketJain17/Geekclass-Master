@@ -45,7 +45,7 @@ class AssignmentWeek extends StatelessWidget {
                 Text(
                   count.toString(),
                   style: const TextStyle(
-                    color: AppColor.white,
+                    color: AppColor.black,
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
                   ),
@@ -54,7 +54,7 @@ class AssignmentWeek extends StatelessWidget {
                 Text(
                   type == AssignmentType.assigned ? "Assigned" : "Missed",
                   style: const TextStyle(
-                    color: AppColor.white,
+                    color: AppColor.black,
                   ),
                 )
               ],
@@ -65,7 +65,7 @@ class AssignmentWeek extends StatelessWidget {
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
               style: const TextStyle(
-                color: AppColor.grey,
+                color: AppColor.black,
                 fontSize: 12,
               ),
             )

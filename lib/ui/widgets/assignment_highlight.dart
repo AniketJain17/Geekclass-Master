@@ -21,8 +21,8 @@ class AssignmentHighlight extends StatelessWidget {
       ),
       child: InkWell(
         borderRadius: BorderRadius.circular(8),
-        splashColor: AppColor.white.withOpacity(0.05),
-        highlightColor: AppColor.white.withOpacity(0.15),
+        splashColor: Color.fromARGB(255, 0, 0, 0).withOpacity(0.05),
+        highlightColor: Color.fromARGB(255, 0, 0, 0).withOpacity(0.15),
         onTap: () {
           onTap(assignment);
         },
@@ -44,7 +44,7 @@ class AssignmentHighlight extends StatelessWidget {
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
                 style: const TextStyle(
-                  color: AppColor.white,
+                  color: Color.fromARGB(255, 0, 0, 0),
                   fontSize: 16,
                   fontWeight: FontWeight.w600,
                 ),
@@ -53,7 +53,7 @@ class AssignmentHighlight extends StatelessWidget {
               Text(
                 "Due ${DateFormat('MMM dd, HH:mm').format(assignment.dueAt)}",
                 style: const TextStyle(
-                  color: AppColor.grey,
+                  color: Color.fromARGB(255, 0, 0, 0),
                   fontSize: 12,
                 ),
               ),
@@ -66,7 +66,7 @@ class AssignmentHighlight extends StatelessWidget {
                     "assets/icons/assignment.svg",
                     width: 24,
                     height: 24,
-                    color: AppColor.white,
+                    color: Color.fromARGB(255, 0, 0, 0),
                   ),
                   const SizedBox(width: 8),
                   // Assignment status

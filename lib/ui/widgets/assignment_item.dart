@@ -15,6 +15,7 @@ class AssignmentItem extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 8),
       decoration: BoxDecoration(
+        color: Colors.black12,
         border: Border.all(color: AppColor.dark, width: 1.3),
         borderRadius: BorderRadius.circular(8),
       ),
@@ -30,7 +31,7 @@ class AssignmentItem extends StatelessWidget {
                   children: [
                     SvgPicture.asset(
                       "assets/icons/assignment.svg",
-                      color: AppColor.white,
+                      color: const Color.fromARGB(255, 0, 0, 0),
                       width: 24,
                       height: 24,
                     ),
@@ -43,7 +44,7 @@ class AssignmentItem extends StatelessWidget {
                           Text(
                             assignment.title,
                             style: const TextStyle(
-                              color: AppColor.white,
+                              color: Color.fromARGB(255, 0, 0, 0),
                               fontWeight: FontWeight.w600,
                             ),
                           ),
@@ -51,7 +52,7 @@ class AssignmentItem extends StatelessWidget {
                           Text(
                             "Due at ${DateFormat("MMM dd").format(assignment.dueAt)}",
                             style: const TextStyle(
-                              color: AppColor.grey,
+                              color: Color.fromARGB(255, 0, 0, 0),
                               fontSize: 12,
                             ),
                           ),
@@ -70,7 +71,7 @@ class AssignmentItem extends StatelessWidget {
                     maxLines: 3,
                     overflow: TextOverflow.ellipsis,
                     style: const TextStyle(
-                      color: AppColor.grey,
+                      color: Color.fromARGB(255, 0, 0, 0),
                       fontSize: 12,
                     ),
                   ),
@@ -100,7 +101,7 @@ class AssignmentItem extends StatelessWidget {
                 children: [
                   SvgPicture.asset(
                     "assets/icons/comment.svg",
-                    color: AppColor.grey,
+                    color: Color.fromARGB(255, 0, 0, 0),
                     width: 16,
                     height: 16,
                   ),
@@ -108,7 +109,7 @@ class AssignmentItem extends StatelessWidget {
                   const Text(
                     "Add class's comment",
                     style: TextStyle(
-                      color: AppColor.grey,
+                      color: Color.fromARGB(255, 0, 0, 0),
                       fontSize: 12,
                     ),
                   ),

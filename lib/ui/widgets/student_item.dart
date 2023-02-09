@@ -33,7 +33,7 @@ class StudentItem extends StatelessWidget {
                 Text(
                   student.name,
                   style: const TextStyle(
-                    color: AppColor.white,
+                    color: Color.fromARGB(255, 0, 0, 0),
                     fontSize: 16,
                     fontWeight: FontWeight.w600,
                   ),
@@ -42,7 +42,7 @@ class StudentItem extends StatelessWidget {
                 Text(
                   student.email,
                   style: const TextStyle(
-                    color: AppColor.grey,
+                    color: Color.fromARGB(255, 0, 0, 0),
                     fontSize: 12,
                   ),
                 ),

@@ -9,7 +9,12 @@ import 'package:geeclass/widgets/circle_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+import '../ui/views/home_view.dart';
 import '../widgets/search_testfield.dart';
+import 'Login/login_screen.dart';
+import 'base_screen.dart';
+import 'front page/sp.dart';
+import 'home_screen.dart';
 
 class FeaturedScreen extends StatefulWidget {
   const FeaturedScreen({Key? key}) : super(key: key);
@@ -24,9 +29,140 @@ class _FeaturedScreenState extends State<FeaturedScreen> {
     return AnnotatedRegion<SystemUiOverlayStyle>(
       value: SystemUiOverlayStyle.light,
       child: Scaffold(
+        drawer: Drawer(
+          child: Container(
+            color: Colors.white,
+            child: ListView(
+              padding: EdgeInsets.zero,
+              children: [
+                const DrawerHeader(
+                  decoration: BoxDecoration(
+                    color: Color(0xFF6F35A5),
+                  ),
+                  // ignore: unnecessary_const
+
+                  child: Text(
+                    'Menu',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                        fontSize: 30,
+                        color: Color.fromARGB(255, 255, 255, 255)),
+                  ),
+                ),
+                Expanded(
+                  // ignore: avoid_unnecessary_containers
+                  child: Container(
+                    child: Column(
+                      children: [
+                        ListTile(
+                          title: const Text('Home'),
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) {
+                                  return const MobileWelcom();
+                                },
+                              ),
+                            );
+                          },
+                        ),
+                        ListTile(
+                          title: const Text('Classes'),
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) {
+                                  return const HomeView();
+                                },
+                              ),
+                            );
+                          },
+                        ),
+                        ListTile(
+                          title: const Text('Video call'),
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) {
+                                  return const HomeScreen();
+                                },
+                              ),
+                            );
+                          },
+                        ),
+                        ListTile(
+                          title: const Text('Smart Attendance'),
+                          onTap: () {},
+                        ),
+                        ListTile(
+                          title: const Text('Mid-Term Marks'),
+                          onTap: () {},
+                        ),
+                        ListTile(
+                          title: const Text('E-learning'),
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) {
+                                  return const BaseScreen();
+                                },
+                              ),
+                            );
+                          },
+                        ),
+                        ListTile(
+                          title: const Text('Log out'),
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) {
+                                  return const LoginScreen();
+                                },
+                              ),
+                            );
+                          },
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+        appBar:
+            AppBar(elevation: 0, backgroundColor: Color(0xFF6F35A5), actions: [
+          Row(
+            children: [
+              CircleButton(
+                icon: Icons.notifications,
+                onPressed: () {},
+              ),
+              const SizedBox(
+                width: 20,
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(30),
+                  child: Image.asset(
+                    "assets/images/user.png",
+                    width: 40,
+                    height: 40,
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ]),
         body: Column(
           children: const [
-            AppBar(),
+            AppBar1(),
             Body(),
           ],
         ),
@@ -142,16 +278,16 @@ class CategoryCard extends StatelessWidget {
   }
 }
 
-class AppBar extends StatelessWidget {
-  const AppBar({
+class AppBar1 extends StatelessWidget {
+  const AppBar1({
     Key? key,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.only(top: 50, left: 20, right: 20),
-      height: 200,
+      padding: const EdgeInsets.only(top: 20, left: 20, right: 20),
+      // height: 200,
       width: double.infinity,
       decoration: const BoxDecoration(
         borderRadius: BorderRadius.only(
@@ -163,8 +299,8 @@ class AppBar extends StatelessWidget {
           end: Alignment.bottomRight,
           stops: [0.1, 0.5],
           colors: [
-            Color(0xff886ff2),
-            Color(0xff6849ef),
+            Color(0xFF6F35A5),
+            Color(0xFF6F35A5),
           ],
         ),
       ),
@@ -178,16 +314,15 @@ class AppBar extends StatelessWidget {
                 "Hello,\nGood Morning",
                 style: Theme.of(context).textTheme.titleLarge,
               ),
-              CircleButton(
-                icon: Icons.notifications,
-                onPressed: () {},
-              ),
             ],
           ),
           const SizedBox(
             height: 20,
           ),
-          const SearchTextField()
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: const SearchTextField(),
+          )
         ],
       ),
     );

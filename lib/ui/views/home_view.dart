@@ -8,6 +8,11 @@ import 'package:geeclass/ui/widgets/assignment_week.dart';
 import 'package:geeclass/ui/widgets/subject_item.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 
+import '../../Screens/Login/login_screen.dart';
+import '../../Screens/base_screen.dart';
+import '../../Screens/front page/sp.dart';
+import '../../Screens/home_screen.dart';
+
 class HomeView extends StatelessWidget {
   const HomeView({Key? key}) : super(key: key);
 
@@ -15,7 +20,177 @@ class HomeView extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Colors.black54,
+        appBar:
+            AppBar(elevation: 0, backgroundColor: Color(0xFF6F35A5), actions: [
+          Align(
+            alignment: Alignment.centerRight,
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              mainAxisAlignment: MainAxisAlignment.end,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                // Clickable icon
+                AppIconButton(
+                  icon: SvgPicture.asset(
+                    "assets/icons/schedule.svg",
+                    width: 24,
+                    height: 24,
+                    color: AppColor.black,
+                  ),
+                  onTap: () {},
+                ),
+                const SizedBox(width: 12),
+                AppIconButton(
+                  icon: Stack(
+                    children: [
+                      SvgPicture.asset(
+                        "assets/icons/notification-fill.svg",
+                        width: 24,
+                        height: 24,
+                        color: AppColor.black,
+                      ),
+                      Positioned(
+                        right: 2,
+                        top: 0,
+                        child: Container(
+                          width: 10,
+                          height: 10,
+                          decoration: BoxDecoration(
+                            color: Theme.of(context).primaryColor,
+                            border: Border.all(
+                              color: Theme.of(context).canvasColor,
+                              width: 1.5,
+                            ),
+                            borderRadius: BorderRadius.circular(360),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  onTap: () {},
+                ),
+                const SizedBox(width: 12),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(360),
+                    child: Image.asset(
+                      "assets/images/user.png",
+                      width: 40,
+                      height: 40,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ]),
+        drawer: Drawer(
+          child: Container(
+            color: Colors.white,
+            child: ListView(
+              padding: EdgeInsets.zero,
+              children: [
+                const DrawerHeader(
+                  decoration: BoxDecoration(
+                    color: Color(0xFF6F35A5),
+                    // backgroundColor: kPrimaryLightColor, elevation: 0),
+                  ),
+                  // ignore: unnecessary_const
+                  child: const Text(
+                    'Menu',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                        fontSize: 30,
+                        color: Color.fromARGB(255, 255, 255, 255)),
+                  ),
+                ),
+                Expanded(
+                  child: Container(
+                    child: Column(
+                      children: [
+                        ListTile(
+                          title: const Text('Home'),
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) {
+                                  return const MobileWelcom();
+                                },
+                              ),
+                            );
+                          },
+                        ),
+                        ListTile(
+                          title: const Text('Classes'),
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) {
+                                  return const HomeView();
+                                },
+                              ),
+                            );
+                          },
+                        ),
+                        ListTile(
+                          title: const Text('Video call'),
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) {
+                                  return const HomeScreen();
+                                },
+                              ),
+                            );
+                          },
+                        ),
+                        ListTile(
+                          title: const Text('Smart Attendance'),
+                          onTap: () {},
+                        ),
+                        ListTile(
+                          title: const Text('Mid-Term Marks'),
+                          onTap: () {},
+                        ),
+                        ListTile(
+                          title: const Text('E-learning'),
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) {
+                                  return const BaseScreen();
+                                },
+                              ),
+                            );
+                          },
+                        ),
+                        ListTile(
+                          title: const Text('Log out'),
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) {
+                                  return const LoginScreen();
+                                },
+                              ),
+                            );
+                          },
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+        backgroundColor: Colors.white,
         floatingActionButton: FloatingActionButton(
           onPressed: () {
             showBarModalBottomSheet(
@@ -51,13 +226,13 @@ class HomeView extends StatelessWidget {
                         keyboardType: TextInputType.text,
                         textInputAction: TextInputAction.done,
                         style: const TextStyle(
-                          color: AppColor.white,
+                          color: Color.fromARGB(255, 0, 0, 0),
                           fontWeight: FontWeight.w500,
                         ),
                         decoration: InputDecoration(
                           hintText: "Enter your class code",
                           hintStyle: TextStyle(
-                            color: AppColor.grey.withOpacity(
+                            color: Color.fromARGB(255, 24, 25, 27).withOpacity(
                               0.75,
                             ),
                           ),
@@ -103,7 +278,7 @@ class HomeView extends StatelessWidget {
                                   Text(
                                     "Admin",
                                     style: TextStyle(
-                                      color: AppColor.white,
+                                      color: Color.fromARGB(255, 0, 0, 0),
                                       fontSize: 16,
                                       fontWeight: FontWeight.w600,
                                     ),
@@ -112,7 +287,7 @@ class HomeView extends StatelessWidget {
                                   Text(
                                     "admin@gmail.com",
                                     style: TextStyle(
-                                      color: AppColor.grey,
+                                      color: Color.fromARGB(255, 0, 0, 0),
                                       fontSize: 12,
                                     ),
                                   ),
@@ -149,7 +324,7 @@ class HomeView extends StatelessWidget {
                         child: const Text(
                           "Join Class",
                           style: TextStyle(
-                            color: Color.fromARGB(255, 30, 32, 35),
+                            color: Color.fromARGB(255, 255, 255, 255),
                             fontSize: 16,
                             fontWeight: FontWeight.bold,
                           ),
@@ -175,66 +350,7 @@ class HomeView extends StatelessWidget {
           padding: const EdgeInsets.all(24),
           child: Column(
             children: [
-              Align(
-                alignment: Alignment.centerRight,
-                child: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    // Clickable icon
-                    AppIconButton(
-                      icon: SvgPicture.asset(
-                        "assets/icons/schedule.svg",
-                        width: 24,
-                        height: 24,
-                        color: AppColor.white,
-                      ),
-                      onTap: () {},
-                    ),
-                    const SizedBox(width: 12),
-                    AppIconButton(
-                      icon: Stack(
-                        children: [
-                          SvgPicture.asset(
-                            "assets/icons/notification-fill.svg",
-                            width: 24,
-                            height: 24,
-                            color: AppColor.white,
-                          ),
-                          Positioned(
-                            right: 2,
-                            top: 0,
-                            child: Container(
-                              width: 10,
-                              height: 10,
-                              decoration: BoxDecoration(
-                                color: Theme.of(context).primaryColor,
-                                border: Border.all(
-                                  color: Theme.of(context).canvasColor,
-                                  width: 1.5,
-                                ),
-                                borderRadius: BorderRadius.circular(360),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                      onTap: () {},
-                    ),
-                    const SizedBox(width: 12),
-                    ClipRRect(
-                      borderRadius: BorderRadius.circular(360),
-                      child: Image.asset(
-                        "assets/images/user.png",
-                        width: 40,
-                        height: 40,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              const SizedBox(height: 32),
+              // const SizedBox(height: 32),
               Align(
                 alignment: Alignment.centerLeft,
                 child: Column(
@@ -245,13 +361,13 @@ class HomeView extends StatelessWidget {
                       text: const TextSpan(
                         style: TextStyle(
                           fontSize: 24,
-                          color: AppColor.white,
+                          color: AppColor.black,
                         ),
                         children: [
                           TextSpan(
                             text: "Hello ",
                             style: TextStyle(
-                              color: AppColor.white,
+                              // color: AppColor.white,
                               fontWeight: FontWeight.w300,
                             ),
                           ),
@@ -275,7 +391,7 @@ class HomeView extends StatelessWidget {
                       child: const Text(
                         "Never underestimate yourself, you've came this far",
                         style: TextStyle(
-                          color: AppColor.grey,
+                          color: AppColor.black,
                         ),
                       ),
                     ),
@@ -293,7 +409,7 @@ class HomeView extends StatelessWidget {
                       Text(
                         "This week",
                         style: TextStyle(
-                          color: AppColor.white,
+                          color: AppColor.black,
                           fontSize: 16,
                           fontWeight: FontWeight.w600,
                         ),

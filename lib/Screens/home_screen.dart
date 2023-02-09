@@ -6,6 +6,10 @@ import 'package:permission_handler/permission_handler.dart';
 import 'package:provider/provider.dart';
 import '../services/join_service.dart';
 import '../services/sdk_initializer.dart';
+import '../ui/views/home_view.dart';
+import 'Login/login_screen.dart';
+import 'base_screen.dart';
+import 'front page/sp.dart';
 import 'meeting_screen.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -64,143 +68,203 @@ class _HomeScreenState extends State<HomeScreen> {
       child: Scaffold(
         backgroundColor: const Color.fromARGB(255, 255, 255, 255),
         appBar: AppBar(
-          backgroundColor: Theme.of(context).backgroundColor,
+          backgroundColor: Color(0xFF6F35A5),
           elevation: 0,
-          title: const Text("Meet"),
+          title: const Text("GMeet"),
           centerTitle: true,
           actions: [
             IconButton(
-              icon: const Icon(Icons.account_circle),
+              icon: ClipRRect(
+                borderRadius: BorderRadius.circular(360),
+                child: Image.asset(
+                  "assets/images/user.png",
+                  // width: 40,
+                  // height: 40,
+                ),
+              ),
               onPressed: () {},
             ),
           ],
         ),
         drawer: Drawer(
-          child: ListView(
-            padding: EdgeInsets.zero,
-            children: [
-              DrawerHeader(
-                decoration: BoxDecoration(
-                  color: Theme.of(context).backgroundColor,
+          child: Container(
+            color: Colors.white,
+            child: ListView(
+              padding: EdgeInsets.zero,
+              children: [
+                const DrawerHeader(
+                  decoration: BoxDecoration(
+                    color: Color(0xFF6F35A5),
+                    // backgroundColor: kPrimaryLightColor, elevation: 0),
+                  ),
+                  // ignore: unnecessary_const
+                  child: const Text(
+                    'Menu',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                        fontSize: 30,
+                        color: Color.fromARGB(255, 255, 255, 255)),
+                  ),
                 ),
-                child: const Text(
-                  'Google Meet',
-                  style: TextStyle(fontSize: 25, color: Colors.white),
-                ),
-              ),
-              ListTile(
-                title: Row(
-                  children: const [
-                    Icon(Icons.settings_outlined),
-                    SizedBox(
-                      width: 10,
+                Expanded(
+                  child: Container(
+                    child: Column(
+                      children: [
+                        ListTile(
+                          title: const Text('Home'),
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) {
+                                  return const MobileWelcom();
+                                },
+                              ),
+                            );
+                          },
+                        ),
+                        ListTile(
+                          title: const Text('Classes'),
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) {
+                                  return const HomeView();
+                                },
+                              ),
+                            );
+                          },
+                        ),
+                        ListTile(
+                          title: const Text('Video call'),
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) {
+                                  return const HomeScreen();
+                                },
+                              ),
+                            );
+                          },
+                        ),
+                        ListTile(
+                          title: const Text('Smart Attendance'),
+                          onTap: () {},
+                        ),
+                        ListTile(
+                          title: const Text('Mid-Term Marks'),
+                          onTap: () {},
+                        ),
+                        ListTile(
+                          title: const Text('E-learning'),
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) {
+                                  return const BaseScreen();
+                                },
+                              ),
+                            );
+                          },
+                        ),
+                        ListTile(
+                          title: const Text('Log out'),
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) {
+                                  return const LoginScreen();
+                                },
+                              ),
+                            );
+                          },
+                        ),
+                      ],
                     ),
-                    Text('Settings'),
-                  ],
+                  ),
                 ),
-                onTap: () {},
-              ),
-              ListTile(
-                title: Row(
-                  children: const [
-                    Icon(Icons.feedback_outlined),
-                    SizedBox(
-                      width: 10,
-                    ),
-                    Text('Send feedback'),
-                  ],
-                ),
-                onTap: () {},
-              ),
-              ListTile(
-                title: Row(
-                  children: const [
-                    Icon(Icons.help_outline),
-                    SizedBox(
-                      width: 10,
-                    ),
-                    Text('Help'),
-                  ],
-                ),
-                onTap: () {},
-              ),
-            ],
-          ), // Populate the Drawer in the next step.
+              ],
+            ),
+          ),
         ),
         body: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                OutlinedButton(
-                  onPressed: () async {
-                    showModalBottomSheet<void>(
-                      context: context,
-                      builder: (BuildContext context) {
-                        return SizedBox(
-                          height: 200,
-                          child: ListView(
-                            padding: EdgeInsets.zero,
-                            children: <Widget>[
-                              ListTile(
-                                title: Row(
-                                  children: const [
-                                    Icon(Icons.video_call),
-                                    SizedBox(
-                                      width: 10,
-                                    ),
-                                    Text('Start an instant meeting'),
-                                  ],
+            Container(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  OutlinedButton(
+                    onPressed: () async {
+                      showModalBottomSheet<void>(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return SizedBox(
+                            height: 200,
+                            child: ListView(
+                              padding: EdgeInsets.zero,
+                              children: <Widget>[
+                                ListTile(
+                                  title: Row(
+                                    children: const [
+                                      Icon(Icons.video_call),
+                                      SizedBox(
+                                        width: 10,
+                                      ),
+                                      Text('Start an instant meeting'),
+                                    ],
+                                  ),
+                                  onTap: () async {
+                                    bool isJoined = await joinRoom();
+                                    if (isJoined) {
+                                      Navigator.of(context).push(MaterialPageRoute(
+                                          builder: (_) =>
+                                              ListenableProvider.value(
+                                                  value: _dataStore,
+                                                  child:
+                                                      const MeetingScreen())));
+                                    } else {
+                                      const SnackBar(content: Text("Error"));
+                                    }
+                                  },
                                 ),
-                                onTap: () async {
-                                  bool isJoined = await joinRoom();
-                                  if (isJoined) {
-                                    Navigator.of(context).push(MaterialPageRoute(
-                                        builder: (_) =>
-                                            ListenableProvider.value(
-                                                value: _dataStore,
-                                                child: const MeetingScreen())));
-                                  } else {
-                                    const SnackBar(content: Text("Error"));
-                                  }
-                                },
-                              ),
-                              ListTile(
-                                title: Row(
-                                  children: const [
-                                    Icon(Icons.close),
-                                    SizedBox(
-                                      width: 10,
-                                    ),
-                                    Text('Close'),
-                                  ],
+                                ListTile(
+                                  title: Row(
+                                    children: const [
+                                      Icon(Icons.close),
+                                      SizedBox(
+                                        width: 10,
+                                      ),
+                                      Text('Close'),
+                                    ],
+                                  ),
+                                  onTap: () {
+                                    Navigator.pop(context);
+                                  },
                                 ),
-                                onTap: () {
-                                  Navigator.pop(context);
-                                },
-                              ),
-                            ],
-                          ),
-                        );
-                      },
-                    );
-                  },
-                  child: const Text('New meeting'),
-                ),
-                OutlinedButton(
-                    // style: Theme.of(context)
-                    //     .outlinedButtonTheme
-                    //     .style!
-                    //     .copyWith(
-                    //         side: MaterialStateProperty.all(
-                    //             const BorderSide(color: Colors.white)),
-                    //         backgroundColor: MaterialStateColor.resolveWith(
-                    //             (states) => Colors.transparent),
-                    //         foregroundColor: MaterialStateColor.resolveWith(
-                    //             (states) => Colors.white)),
-                    onPressed: () {},
-                    child: const Text('Join with a code'))
-              ],
+                              ],
+                            ),
+                          );
+                        },
+                      );
+                    },
+                    child: const Text('New meeting'),
+                  ),
+                  OutlinedButton(
+                      onPressed: () {}, child: const Text('Join with a code'))
+                ],
+              ),
+            ),
+            const SizedBox(
+              height: 50,
+            ),
+            Container(
+              child: Image.network(
+                  "https://fonts.gstatic.com/s/i/productlogos/meet_2020q4/v1/web-96dp/logo_meet_2020q4_color_2x_web_96dp.png"),
             )
           ],
         ),

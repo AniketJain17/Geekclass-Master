@@ -24,14 +24,14 @@ class SubjectPost extends StatelessWidget {
               keyboardType: TextInputType.text,
               textInputAction: TextInputAction.done,
               style: const TextStyle(
-                color: AppColor.white,
+                color: Color.fromARGB(255, 0, 0, 0),
                 fontSize: 12,
                 fontWeight: FontWeight.w500,
               ),
               decoration: InputDecoration(
                 hintText: "Share something with your class",
                 hintStyle: TextStyle(
-                  color: AppColor.grey.withOpacity(0.5),
+                  color: Color.fromARGB(255, 0, 0, 0).withOpacity(0.5),
                   fontSize: 12,
                 ),
                 enabledBorder: InputBorder.none,
